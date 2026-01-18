@@ -23,7 +23,6 @@ const App: React.FC = () => {
   const [theme, setTheme] = useState<Theme>(THEMES[0]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
   const [isLoading, setIsLoading] = useState(true);
 
   // Efek untuk memuat dan mengurai data dari links.csv
@@ -66,10 +65,6 @@ const App: React.FC = () => {
     const savedThemeId = localStorage.getItem('link-hub-theme');
     const savedTheme = THEMES.find(t => t.id === savedThemeId) || THEMES[0];
     setTheme(savedTheme);
-
-    const handleResize = () => setIsMobile(window.innerWidth < 640);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
@@ -85,12 +80,10 @@ const App: React.FC = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchQuery, isMobile]);
+  }, [searchQuery]);
 
-  const totalPages = isMobile ? Math.ceil(filteredLinks.length / LINKS_PER_PAGE) : 1;
-  const paginatedLinks = isMobile
-    ? filteredLinks.slice((currentPage - 1) * LINKS_PER_PAGE, currentPage * LINKS_PER_PAGE)
-    : filteredLinks;
+  const totalPages = Math.ceil(filteredLinks.length / LINKS_PER_PAGE);
+  const paginatedLinks = filteredLinks.slice((currentPage - 1) * LINKS_PER_PAGE, currentPage * LINKS_PER_PAGE);
 
   return (
     <div className={`min-h-screen text-white font-sans transition-colors duration-500 ${theme.background}`}>
@@ -142,7 +135,7 @@ const App: React.FC = () => {
             )}
           </section>
 
-          {isMobile && totalPages > 1 && (
+          {totalPages > 1 && (
             <div className="flex justify-center items-center gap-4 mt-6">
               <button
                 onClick={() => setCurrentPage(p => p - 1)}
