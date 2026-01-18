@@ -1,0 +1,9 @@
+id,title,url,icon,description,tags
+1,Website Pribadi,https://example.com,GlobeIcon,"Kunjungi website pribadi saya untuk melihat portofolio lengkap dan informasi lebih lanjut.","portofolio;web;pribadi"
+2,GitHub,https://github.com/example,GithubIcon,"Lihat semua proyek open-source dan kontribusi kode saya di GitHub.","kode;proyek;git"
+3,LinkedIn,https://linkedin.com/in/example,LinkedinIcon,,
+4,Twitter / X,https://twitter.com/example,TwitterIcon,,
+5,Hubungi Saya,mailto:example@example.com,MailIcon,"Kirim email untuk pertanyaan kolaborasi atau sekadar menyapa.","kontak;email"
+6,Project A,https://example.com/project-a,GlobeIcon,"Deskripsi singkat mengenai Project A yang luar biasa.","studi kasus;react;typescript"
+7,Project B,https://example.com/project-b,GlobeIcon,,
+8,Blog,https://example.com/blog,GlobeIcon,"Baca tulisan-tulisan saya mengenai teknologi dan pengembangan web.","blog;teknologi;artikel"
